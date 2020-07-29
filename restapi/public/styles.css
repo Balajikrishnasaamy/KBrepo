@@ -1,0 +1,77 @@
+.App {
+    font-family: sans-serif;
+  }
+  
+  li {
+    position: relative;
+    padding: 0.5rem;
+  }
+  
+  .header {
+    background-color: #f5ba13;
+    padding: 16px 32px;
+    margin: -23px;
+    color: #eee;
+  }
+  
+  body {
+    background: #eee;
+    padding: 0 16px;
+  }
+  
+  .list {
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 0 2px 5px #ccc;
+    padding: 10px;
+    width: 240px;
+    margin: 16px;
+    float: left;
+  }
+  
+  .list h3 {
+    font-size: 1.1em;
+    margin-bottom: 6px;
+  }
+  
+  .note {
+    position: relative;
+    width: 480px;
+    margin: 70px auto 20px auto;
+    background: #fff;
+    padding: 15px;
+    border-radius: 7px;
+    box-shadow: 0 1px 5px rgb(138, 137, 137);
+  }
+  
+  input {
+    width: 100%;
+    border: none;
+    padding: 4px;
+    outline: none;
+    font-size: 1.2em;
+    font-family: inherit;
+    resize: none;
+  }
+  
+  .addButton {
+    position: absolute;
+    right: 18px;
+    bottom: -12px;
+    background: #f5ba13;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .deleteButton {
+    position: relative;
+    float: right;
+    color: #f5ba13;
+  }
+  
