@@ -1,5 +1,4 @@
 import React from "react";
-import axios from 'axios';
 
 import CreateList from "./CreateList";
 import Header from "./Header";
@@ -20,14 +19,33 @@ export default function App() {
     },[url]);
 
   async function postData(json) {
-      const response = await axios.post(domain + "/todolist", json);
-      console.log(response.data);
+    const url = domain + "/todolist";
+    await fetch(url,{
+      method: "POST",
+      headers: { 
+        "Content-type": "application/json; charset=UTF-8"
+      }, 
+      body: JSON.stringify(json)
+    })
+    .then(res => res.json())
+    .then(response => {
+      console.log(response);
+    });
       geteData();
   }
 
   async function geteData() {
-    const response = await axios.get(domain + "/todolist");
-    setLists(response.data);
+    const url = domain + "/todolist";
+    await fetch(url,{
+      method: "GET",
+      headers: { 
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+    .then(res => res.json())
+    .then(response => {
+      setLists(response);
+    });
   }
 
   function onAdd(item) {
@@ -38,9 +56,17 @@ export default function App() {
   }
 
   async function onDelete(id) {
-    console.log(id);
-    const response = await axios.delete(domain + "/todolist/"+id);
-      console.log(response.data);
+    const url = domain + "/todolist/"+id;
+    await fetch(url,{
+      method: "DELETE",
+      headers: { 
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+    .then(res => res.json())
+    .then(response => {
+      console.log(response);
+    });
       geteData();
   }
 
