@@ -11,36 +11,31 @@ export default function App() {
 
     var url = domain + "/todolist"
     React.useEffect(() => {
-      geteData();
+      getData()
     },[url]);
 
-  function postData(json) {
+  const postData = async function(json) {
     const url = domain + "/todolist";
-    fetch(url,{
+    const data = await fetch(url,{
       method: "POST",
       headers: { 
         "Content-type": "application/json; charset=UTF-8"
       }, 
       body: JSON.stringify(json)
-    })
-    .then(res => res.json())
-    .then(response => {
-      geteData();
     });
+    getData();
   }
 
-  function geteData() {
+  async function getData() {
     const url = domain + "/todolist";
-    fetch(url,{
+    const data = await fetch(url,{
       method: "GET",
       headers: { 
         "Content-type": "application/json; charset=UTF-8"
       }
-    })
-    .then(res => res.json())
-    .then(response => {
-      setLists(response);
     });
+    const parsedData = await data.json();
+    setLists(parsedData);
   }
 
   function onAdd(item) {
@@ -50,18 +45,15 @@ export default function App() {
     postData(json);
   }
 
-  function onDelete(id) {
+  const onDelete = async function(id) {
     const url = domain + "/todolist/"+id;
-    fetch(url,{
+    const data = await fetch(url,{
       method: "DELETE",
       headers: { 
         "Content-type": "application/json; charset=UTF-8"
       }
-    })
-    .then(res => res.json())
-    .then(response => {
-      geteData();
     });
+    getData();
   }
 
   return (
