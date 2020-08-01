@@ -11,16 +11,12 @@ export default function App() {
 
     var url = domain + "/todolist"
     React.useEffect(() => {
-      fetch(url)
-      .then(res => res.json())
-      .then(response => {
-        setLists(response);
-      })
+      geteData();
     },[url]);
 
-  async function postData(json) {
+  function postData(json) {
     const url = domain + "/todolist";
-    await fetch(url,{
+    fetch(url,{
       method: "POST",
       headers: { 
         "Content-type": "application/json; charset=UTF-8"
@@ -29,14 +25,13 @@ export default function App() {
     })
     .then(res => res.json())
     .then(response => {
-      console.log(response);
-    });
       geteData();
+    });
   }
 
-  async function geteData() {
+  function geteData() {
     const url = domain + "/todolist";
-    await fetch(url,{
+    fetch(url,{
       method: "GET",
       headers: { 
         "Content-type": "application/json; charset=UTF-8"
@@ -55,9 +50,9 @@ export default function App() {
     postData(json);
   }
 
-  async function onDelete(id) {
+  function onDelete(id) {
     const url = domain + "/todolist/"+id;
-    await fetch(url,{
+    fetch(url,{
       method: "DELETE",
       headers: { 
         "Content-type": "application/json; charset=UTF-8"
@@ -65,9 +60,8 @@ export default function App() {
     })
     .then(res => res.json())
     .then(response => {
-      console.log(response);
-    });
       geteData();
+    });
   }
 
   return (
